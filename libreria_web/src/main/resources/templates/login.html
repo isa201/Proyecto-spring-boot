@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="/fragments/head::head"></head>
+
+<body>
+    <div class="container">
+        <header id="cabecera" class="row">
+            <div id="titulo" class="col-12">
+                <h1>BIBLIOTECA VIRTUAL</h1>
+            </div>
+        </header>
+
+        <section id="contenido" class="row">
+            <div id="login">
+                <h5>
+                    INICIO SESION
+                </h5>
+                <form action="/logincheck" method="post" enctype="multipart/form-data">
+                    <label for="">Email</label><br>
+                    <input type="email" name="username"> <br>
+                    <label for="">Contraseña</label><br>
+                    <input type="password" name="password"><br>
+                    <input type="submit" value="INGRESAR">
+                </form>
+            </div>
+        </section>
+
+        <footer th:replace="/fragments/footer::footer">
+        </footer>
+    </div>
+
+    <script th:replace="/fragments/bootjs :: script"></script>
+</body>
+
+</html>

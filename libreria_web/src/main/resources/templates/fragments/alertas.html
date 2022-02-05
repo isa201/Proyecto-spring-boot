@@ -1,0 +1,8 @@
+<div id="alertas">
+  <div id="exito" th:if="${exito}!=null">
+    <p th:text="${exito}"></p>
+  </div>
+  <div id="error" th:if="${error}!=null">
+    <p th:text="${error}"></p>
+  </div>
+</div>

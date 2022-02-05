@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html
+  lang="es"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head th:replace="/fragments/head::head"> </head>
+
+  <body>
+    <div class="container">
+      <header th:replace="/fragments/header::header"></header>
+
+      <section id="contenido" class="row">
+        <div id="login-autor">
+          <h5>REGISTRAR NUEVO AUTOR</h5>
+          <form action="/autores" method="post" enctype="multipart/form-data">
+            <label for="nombre">Nombre</label><br />
+            <input type="text" name="nombre" /><br />
+            <input type="submit" value="Registrar" />
+          </form>
+        </div>
+        <div th:replace="/fragments/alertas::div"></div>
+      </section>
+
+      <footer th:replace="/fragments/footer::footer"></footer>
+    </div>
+
+    <script th:replace="/fragments/bootjs :: script"></script>
+  </body>
+</html>

@@ -1,0 +1,21 @@
+<nav>
+  <!--
+    Usando thymelef puedo hacer que el usuario o administrador vea las opciones de la barra de navegacion
+    segun la sesion que se encuentre
+    Y para editar el perfil del usuario traigo la sesion del usuario usando el ID de ese usuario
+    Solo si la sesion es de administrador se podra ver el apartado admin en la barra de navegacion
+  -->
+  <a href="/login" th:if="${session.usuariosession == null}">Inciar sesion</a>
+  <a href="/registrar" th:if="${session.usuariosession == null}">Registrar</a>
+  <a href="/logout" th:if="${session.usuariosession != null}">
+    Cerrar sesion
+  </a>
+  <a
+    th:href="@{/usuario/editar-perfil(id=__${session.usuariosession.id}__)}"
+    th:if="${session.usuariosession != null}"
+    >Editar Perfil</a
+  >
+  <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin/dashboard}"
+    >ADMINISTRADOR</a
+  >
+</nav>

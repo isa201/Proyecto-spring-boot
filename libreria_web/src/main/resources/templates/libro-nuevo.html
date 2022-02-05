@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html
+  lang="es"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head th:replace="/fragments/head::head"> </head>
+
+  <body>
+    <div class="container">
+      <header th:replace="/fragments/header::header"></header>
+
+      <section id="contenido-libro" class="row">
+        <!--
+            Recibiendo la variable del modelmap puedo imprimir cualquiera de las dos alertas
+            segun la variable que se reciba     
+        -->
+        <div id="login-libro">
+          <h5>REGISTRAR NUEVO LIBRO</h5>
+          <form
+            action="/libro-nuevo"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <label for="archivo">Imagen</label><br />
+            <input type="file" name="archivo" /> <br />
+
+            <label for="isbn">ISBN</label><br />
+            <input type="number" name="isbn" /><br />
+
+            <label for="nombre">Nombre</label><br />
+            <input type="text" name="nombre" /><br />
+
+            <label for="anio">Año</label><br />
+            <input type="number" name="anio" /> <br />
+
+            <label for="ejemplares">Ejemplares</label><br />
+            <input type="number" name="ejemplares" /> <br />
+
+            <label for="ejemplaresPrestados">Prestados</label><br />
+            <input type="number" name="ejemplaresPrestados" /> <br />
+
+            <label for="ejemplaresRestantes">Restantes</label><br />
+            <input type="number" name="ejemplaresRestantes" /> <br />
+
+            <!--
+            Usando thymeleaf puedo iterar el arreglo que envio con el modelmap y cargar 
+            todos los objetos autores y editoriales al combo
+            y luego seleccionarlo para enviarlo por el post
+            -->
+            <label>Autor</label>
+            <select name="idAutor">
+              <option
+                th:each="autor: ${autores}"
+                th:value="${autor.id}"
+                th:text="${autor.nombre}"
+              ></option>
+            </select>
+
+            <label>Editorial</label><br />
+            <select name="idEditorial">
+              <option
+                th:each="editorial: ${editoriales}"
+                th:value="${editorial.id}"
+                th:text="${editorial.nombre}"
+              ></option>
+            </select>
+
+            <input type="submit" value="Registrar" />
+          </form>
+        </div>
+        <div th:replace="/fragments/alertas::div"></div>
+      </section>
+
+      <footer th:replace="/fragments/footer::footer"></footer>
+    </div>
+
+    <script th:replace="/fragments/bootjs :: script"></script>
+  </body>
+</html>

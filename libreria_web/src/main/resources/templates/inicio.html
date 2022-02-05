@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html
+  lang="es"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head th:replace="/fragments/head::head"> </head>
+
+  <body>
+    <div class="container">
+      <header th:replace="/fragments/header::header"></header>
+
+      <section id="inicio" class="row">
+        <h4>¡¡Bienvenido!!Ya eres parte de nuestra biblioteca</h4>
+        <h5>MENU</h5>
+        <ol id="menu" class="list-group list-group-numbered">
+          <li
+            class="list-group-item d-flex justify-content-between align-items-start"
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">
+                <a href="/libros">Acceder a listado de libros</a>
+              </div>
+              Accede a nuestra coleccion de libros
+            </div>
+          </li>
+
+          <li
+            class="list-group-item d-flex justify-content-between align-items-start"
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">
+                <a href="/libro-nuevo">Nuevo libro</a>
+              </div>
+              Almacena nuevos libros y ayudanos a agrandar nuestra coleccion
+            </div>
+          </li>
+
+          <li
+            class="list-group-item d-flex justify-content-between align-items-start"
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">
+                <a href="/autores">Cargar Autor</a>
+              </div>
+              Almacena nuevos autores para nuestros libros
+            </div>
+          </li>
+
+          <li
+            class="list-group-item d-flex justify-content-between align-items-start"
+          >
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">
+                <a href="/editoriales">Cargar Editorial</a>
+              </div>
+              Almacena nuevas editoriales para nuestros libros
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <footer th:replace="/fragments/footer::footer"></footer>
+    </div>
+
+    <script th:replace="/fragments/bootjs :: script"></script>
+  </body>
+</html>

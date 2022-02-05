@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html
+  lang="es"
+  xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head th:replace="/fragments/head::head"> </head>
+
+  <body>
+    <div class="container">
+      <header th:replace="/fragments/header::header"></header>
+
+      <section id="contenido-libros" class="row">
+        <table id="tabla-libros" class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">ISBN</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Año</th>
+              <th scope="col">Autor</th>
+              <th scope="col">Activo</th>
+              <th scope="col">Opciones</th>
+            </tr>
+          </thead>
+          <tbody th:each="libro : ${libros}">
+            <tr>
+              <td th:text="${libro.id}"></td>
+              <td th:text="${libro.isbn}"></td>
+              <td th:text="${libro.nombre}"></td>
+              <td th:text="${libro.anio}"></td>
+              <td th:text="${libro.autor.nombre}"></td>
+              <td>
+                <!--Si la condicion se cumple se coloca SI en la tabla sino se coloca NO-->
+                <span id="true" th:if="${libro.alta}">SI</span>
+                <span id="false" th:if="${!libro.alta}">NO</span>
+              </td>
+              <td>
+                <a th:href="@{/libro/modificar/__${libro.id}__}">Modificar</a>
+                <a th:href="@{/libro/alta/__${libro.id}__}">Dar alta</a>
+                <a th:href="@{/libro/baja/__${libro.id}__}">Dar baja</a>
+                <a th:href="@{/libro/eliminar/__${libro.id}__}">Eliminar</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <footer th:replace="/fragments/footer::footer"></footer>
+    </div>
+
+    <script th:replace="/fragments/bootjs :: script"></script>
+  </body>
+</html>
